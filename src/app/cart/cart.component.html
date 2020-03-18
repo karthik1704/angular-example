@@ -6,6 +6,17 @@
   <span>{{ item.name }}</span>
   <span>{{ item.price | currency }}</span>
 </div>
-<div *ngIf="items">
-  <button (click)="clearCart()">Clear Cart</button>
-</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" formControlName="name" id="name" />
+  </div>
+
+  <div>
+    <label for="address">Address</label>
+    <input type="text" formControlName="address" id="address" />
+  </div>
+
+  <button class="button" type="submit">Checkout</button>
+</form>
